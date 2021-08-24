@@ -1,0 +1,36 @@
+type Attendee implements People {
+  name: String!
+  ticket: TicketType!
+}
+
+type Conference {
+  # Awesome place to learn `things`
+  name: String!
+  year: Int @deprecated(reason: "no needed anymore")
+}
+
+interface People {
+  name: String!
+}
+
+type Query {
+  conference: Conference!
+  people(nameStartWith: String): [People!]!
+  schedule: ScheduleDetails!
+}
+
+type ScheduleDetails {
+  greetings: String!
+  talks: [String!]!
+}
+
+type Speaker implements People {
+  name: String!
+  talks: [String!]!
+}
+
+enum TicketType {
+  CONFERENCE
+  WORKSHOP
+  FULL
+}

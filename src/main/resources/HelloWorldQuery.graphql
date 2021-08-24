@@ -1,0 +1,29 @@
+# Write your query or mutation here
+query HelloWorldQuery($nameStartWith : String) {
+
+    conference{
+        name
+    }
+
+    people (nameStartWith : $nameStartWith){
+
+        name
+
+        ... on Attendee{
+            __typename
+            ticket
+        }
+
+
+        ... on Speaker {
+            __typename
+            talks
+        }
+
+    }
+
+    schedule {
+        greetings
+        talks
+    }
+}
